@@ -21,7 +21,7 @@ function roll() {
     console.log(score.innerHTML);
     if (total > 19) {
       alert("You Win!");
-      score.innerHTML = `Score: 20`;
+      score.innerHTML = `Score: ${total}`;
     }
   }
 }
