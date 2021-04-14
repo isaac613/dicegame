@@ -1,26 +1,29 @@
 let score = document.getElementById("score");
+let total = 0;
+score.innerHTML = `Score: ${total}`;
 
 function roll() {
   const randomNum = Math.floor(Math.random() * 6) + 1;
 
+  total += randomNum;
   const diceImage = `./img/dice` + randomNum + `.png`;
 
   document.querySelectorAll(`img`)[0].setAttribute(`src`, diceImage);
-
-  score.innerHTML += randomNum;
+  console.log(total);
   console.log(randomNum);
   console.log(score);
-}
-
-function totalCalc() {
   if (randomNum == 1) {
+    total = 0;
+    score.innerHTML == `Score: ${total}`;
     alert("You Lose!");
-    score.innerHTML == 0;
-  } else if (score.innerHTML < 20) {
-    score.innerHTML += randomNum;
-  } else if (score.innerHTML >= 20) {
-    alert("You Win!");
+  } else if (total < 27) {
+    score.innerHTML = `Score: ${total}`;
+    console.log(score.innerHTML);
+    if (total > 19) {
+      alert("You Win!");
+      score.innerHTML = `Score: 20`;
+    }
   }
 }
 
-document.getElementById("button").addEventListener("click", roll, totalCalc);
+document.getElementById("button").addEventListener("click", roll);
